@@ -78,7 +78,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, type 
               Choose File
               {fileInfo && (
                 <div className="flex flex-row items-center">
-                  <span className="mx-2 border-l-2 border-muted-foreground h-6 inline-block"></span>
+                  <span className="mx-2 border-l-2 border-muted-foreground h-5 inline-block"></span>
                   <div className="text-sm text-muted-foreground">
                     <p>{fileInfo.name.length > 12 ? truncateFileName(fileInfo.name) : fileInfo.name} · {(fileInfo.size / 1024).toFixed(2)} KB</p>
                   </div>
