@@ -62,11 +62,11 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-export const routeTree = createRouteTree({
-  IndexRoute: new Route({ path: "/" }),
-  AboutRoute: new Route({ path: "/about" }),
-  ContactRoute: new Route({ path: "/contact" }), // Ensure this route is defined
-});
+export const routeTree = rootRoute.addChildren({
+  IndexRoute,
+  AboutRoute,
+  ContactRoute,
+})
 
 /* prettier-ignore-end */
 
