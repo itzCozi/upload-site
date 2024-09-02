@@ -17,7 +17,7 @@ interface SettingsStoreState {
 export const useSettingsStore = create<SettingsStoreState>((set) => ({
   booksPerSearch: 11,
   language: "en",
-  backendURL: "https://backend.bookracy.org",
+  backendURL: "https://backend.files.vc",
   theme: "dark",
 
   setBooksPerSearch: (books) => set({ booksPerSearch: books }),

@@ -1,11 +1,10 @@
-import GitHubLogo from "@/assets/github_logo.svg";
 import { NavLink } from "@/components/ui/nav-link";
 
 export function Footer() {
   return (
-    <div className="bg-background/95 supports-[backdrop-filter]:bg-background/60 z-20 h-[56px] w-full shadow backdrop-blur">
-      <div className="flex h-full items-center justify-between gap-4 px-8">
-        <p className="text-sm font-semibold">© {new Date().getFullYear()} Bookracy</p>
+    <footer className="bg-background/95 supports-[backdrop-filter]:bg-background/60 dark:shadow-secondary z-20 w-full shadow backdrop-blur">
+      <div className="mx-4 flex h-14 items-center justify-between sm:mx-8">
+        <p className="text-sm font-semibold">© {new Date().getFullYear()} files.vc</p>
 
         <div className="flex flex-row gap-2">
           <NavLink to="/">
@@ -16,15 +15,11 @@ export function Footer() {
             About
           </NavLink>
           ·
-          <NavLink to="/docs">
-            Docs
+          <NavLink to="/contact">
+            Contact
           </NavLink>
         </div>
-
-        <a target="_blank" href="https://github.com/upaste" rel="noreferrer" className="h-6 w-6 transition-transform duration-150 hover:scale-110">
-          <img src={GitHubLogo} alt="Github" className="h-6 w-6 dark:invert" />
-        </a>
       </div>
-    </div>
+    </footer>
   );
 }
