@@ -12,12 +12,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, type 
   const ref = useRef<HTMLInputElement | null>(null);
 
   const truncateFileName = (fileName: string): string => {
-    const extension = fileName.split('.').pop();
-    const nameWithoutExtension = fileName.slice(0, fileName.lastIndexOf('.'));
-    const truncatedName = nameWithoutExtension.slice(0, 12);
-    return `${truncatedName}.${extension}`;
+      const extension = fileName.split('.').pop();
+      const nameWithoutExtension = fileName.slice(0, fileName.lastIndexOf('.'));
+      const maxLength = 12 - (extension?.length || 0);
+      const truncatedName = nameWithoutExtension.slice(0, maxLength);
+      return `${truncatedName}.${extension}`;
   };
-
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     setIsDragging(true);
@@ -58,7 +58,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, type 
          onDragOver={handleDragOver}
          onDragLeave={handleDragLeave}
          onDrop={handleDrop}
-        >  
+        >
          <input
            type="file"
            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
@@ -66,6 +66,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, type 
            onChange={handleFileChange}
            {...props}
          />
+         {iconRight && <div className="absolute right-3 translate-y-[7px] text-muted-foreground">{iconRight}</div>}
          <button
            type="button"
            className={cn(`flex flex-row gap-2 h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-custom-color ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 hover ${isDragging ? " transition-colors duration-300 border-dashed border-primary" : ""}`,
@@ -73,12 +74,17 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, type 
              className,
            )}
          >
-           Choose File
-           {fileInfo && (
-             <div className="text-sm text-muted-foreground">
-                <p>{fileInfo.name.length > 12 ? truncateFileName(fileInfo.name) : fileInfo.name} · {(fileInfo.size / 1024).toFixed(2)} KB</p>
-             </div>
-           )}
+           <div className="flex items-center">
+              Choose File
+              {fileInfo && (
+                <>
+                  <span className="mx-2 border-l border-muted-foreground h-5 inline-block"></span>
+                  <div className="text-sm text-muted-foreground">
+                    <p>{fileInfo.name.length > 12 ? truncateFileName(fileInfo.name) : fileInfo.name} · {(fileInfo.size / 1024).toFixed(2)} KB</p>
+                  </div>
+                </>
+              )}
+           </div>
          </button>
         </div>
       ) : (
