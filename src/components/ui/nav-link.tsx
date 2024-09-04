@@ -5,6 +5,7 @@ import { routeTree } from "@/routeTree.gen";
 
 interface NavLinkProps {
   to: RoutePaths<typeof routeTree> | (string & {});
+  className?: string;
   target?: string;
   children: ReactNode;
 }
@@ -13,10 +14,10 @@ function isExternalLink(url: string): boolean {
   return /^(https?:)?\/\//.test(url);
 }
 
-export function NavLink({ to, target, children }: NavLinkProps) {
+export function NavLink({ to, className, target, children }: NavLinkProps) {
   if (isExternalLink(to)) {
     return (
-      <a href={to} target={target} className="text-blue-500 transition-colors duration-300 hover:underline" rel="noreferrer">
+      <a href={to} target={target} className={`text-blue-500 transition-colors duration-300 hover:underline ${className}`} rel="noreferrer">
         {children}
       </a>
     );
@@ -24,7 +25,7 @@ export function NavLink({ to, target, children }: NavLinkProps) {
 
   return (
     <div>
-      <Link to={to} target={target} className="text-blue-500 transition-colors duration-300 hover:underline" rel="noreferrer">
+      <Link to={to} target={target} className={`text-blue-500 transition-colors duration-300 hover:underline ${className}`} rel="noreferrer">
         {children}
       </Link>
     </div>
