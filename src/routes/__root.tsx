@@ -2,7 +2,6 @@ import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { cn } from "@/lib/utils";
 import { createRootRoute, Outlet } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 
 export const Route = createRootRoute({
   component: Root,
@@ -20,7 +19,6 @@ function Root() {
       <footer className={cn("transition-[margin-left] duration-300 ease-in-out")}>
         <Footer />
       </footer>
-      <TanStackRouterDevtools />
     </>
   );
 }

@@ -89,16 +89,16 @@ function Index() {
           }/>
           {(progress > 0) && (
             <div className="w-full flex justify-center">
-              <div className="w-full max-w-md flex flex-col gap-3">
+              <div className="w-full max-w-md flex flex-col text-center gap-3">
                 <div className="bg-gray-300 h-2 rounded">
                   <div className="bg-blue-700 h-2 rounded" style={{ width: `${progress}%` }}></div>
                 </div>
                 {progress >= 100 ? (
-                  <NavLink to={downloadLink} className="text-center text-sm">
+                  <NavLink to={downloadLink} className="text-sm">
                     Download
                   </NavLink>
                 ) : (
-                  <div className="text-center text-sm text-muted-foreground">
+                  <div className="text-sm text-muted-foreground">
                    {Math.round(progress)}% Completed
                   </div>
                 )}
